@@ -1,12 +1,14 @@
-<p>Lösungswort eingeben: </p>
-<input type="text" [(ngModel)]="password">
-<p>Nachricht zu entschlüsseln: </p>
-<textarea name="" id="" cols="20" rows="5" [(ngModel)]="input"></textarea>
-<button (click)="onEncrypt()">Encrypt</button>
-<button (click)="onDecrypt()">Decrypt</button>
-<p>Ent-/Verschlüsselte Nachricht: {{output}}</p>
-<!-- <button pButton (click)="clear()">Clear</button> -->
-<button pButton pRipple type="button" label="clear" (click)="clear()"
-  class="p-button-rounded p-button-secondary p-button-sm"></button>
-<p-button type="button" label="clear" (click)="clear()"
-  styleClass="p-button-rounded p-button-secondary p-button-sm"></p-button>
+<div class="card-container">
+  <p-card header="Kodierwürfel" class="card">
+    <p>Lösungswort eingeben: </p>
+    <input pInputText type="text" [(ngModel)]="password" class="p-inputtext-sm">
+    <p>Nachricht zu entschlüsseln: </p>
+    <textarea pInputTextarea name="" id="" cols="20" rows="5" [(ngModel)]="input"></textarea>
+    <button pButton pRipple (click)="onEncrypt()" class="p-button-rounded">Encrypt</button>
+    <button (click)="onDecrypt()">Decrypt</button>
+    <p>Ent-/Verschlüsselte Nachricht: </p>
+    <p>{{output}}</p>
+    <button *ngIf="output" pButton pRipple type="button" label="clear" (click)="clear()"
+      class="p-button-rounded p-button-outlined p-button-secondary p-button-sm"></button>
+  </p-card>
+</div>

@@ -1,0 +1,23 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: auto;
+  text-align: center;
+}
+
+.p-card-body {
+  display: flex;
+  margin: auto;
+}
+
+input,
+textarea {
+  width: 100%;
+}
+
+button.p-button-rounded {
+  width: 100%;
+  justify-content: center;
+}
