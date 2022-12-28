@@ -2,20 +2,22 @@
 <link rel="stylesheet" href="https://unpkg.com/primeflex/themes/saga-blue.css">
 
 <div class="card-container flex justify-content-center align-items-center m-auto text-center h-screen">
-  <p-card header="Kodierwürfel" class="card">
+  <p-card header="Kodierwürfel">
+    <p-selectButton [options]="transformationOptions" [(ngModel)]="transformationType" optionLabel="label"
+      optionValue="value"></p-selectButton>
     <p>Lösungswort eingeben: </p>
     <input pInputText type="text" [(ngModel)]="password" class="p-inputtext-sm w-full">
     <p>Nachricht zu entschlüsseln: </p>
     <textarea pInputTextarea id="" cols="20" rows="3" [(ngModel)]="input"
       class="w-full justify-content-center"></textarea>
-    <button pButton pRipple (click)="onEncrypt()"
+    <button *ngIf="transformationType ===  'encrypt'" pButton pRipple (click)="onEncrypt()"
       class="p-button-rounded w-full justify-content-center">Encrypt</button>
+    <button *ngIf="transformationType ===  'decrypt'" pButton pRipple (click)="onDecrypt()"
+      class="p-button-rounded w-full justify-content-center">Decrypt</button>
     <!-- <button pButton pRipple (click)="onDecrypt()" class="p-button-rounded">Decrypt</button> -->
     <p>Ent-/Verschlüsselte Nachricht: </p>
-
-    <!-- <div *ngIf="output" class="card bg-primary text-white m-2 flex align-items-center justify-content-center"> -->
-    <div *ngIf="output" [ngStyle]="{backgroundColor:'var(--blue-300)'}"
-      class="text-white m-2 flex border-round align-items-center justify-content-center">
+    <div *ngIf="output" [ngStyle]="{backgroundColor:'var(--primary-100)'}"
+      class="m-2 flex border-round align-items-center justify-content-center">
       <p>{{output}}</p>
     </div>
     <button *ngIf="output" pButton pRipple type="button" label="Clear" (click)="clear()"

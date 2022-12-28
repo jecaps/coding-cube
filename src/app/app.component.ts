@@ -1,10 +1,9 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
   password: string = '';
@@ -16,6 +15,15 @@ export class AppComponent {
   numberOfColumns = 0;
   splittedMessage: string[] = [];
   transposedValues: any[] = [];
+  transformationOptions: any[] = [];
+  transformationType: string = 'encrypt';
+
+  constructor() {
+    this.transformationOptions = [
+      { label: 'Encrypt', value: 'encrypt' },
+      { label: 'Decrypt', value: 'decrypt' },
+    ];
+  }
 
   onEncrypt() {
     this.numberOfRows = Math.ceil(this.input.length / this.password.length);
