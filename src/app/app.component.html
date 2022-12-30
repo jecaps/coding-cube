@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="https://unpkg.com/primeflex@^3/primeflex.css">
 <link rel="stylesheet" href="https://unpkg.com/primeflex/themes/saga-blue.css">
 
-<div class="card-container flex justify-content-center align-items-center m-auto text-center h-screen">
+<div
+  class="card-container flex flex-column justify-content-center align-items-center m-auto text-center h-screen max-w-24rem">
   <p-card header="Kodierwürfel">
     <p-selectButton [options]="transformationOptions" [(ngModel)]="transformationType" optionLabel="label"
       optionValue="value"></p-selectButton>
@@ -14,13 +15,14 @@
       class="p-button-rounded w-full justify-content-center">Encrypt</button>
     <button *ngIf="transformationType ===  'decrypt'" pButton pRipple (click)="onDecrypt()"
       class="p-button-rounded w-full justify-content-center">Decrypt</button>
-    <!-- <button pButton pRipple (click)="onDecrypt()" class="p-button-rounded">Decrypt</button> -->
-    <p>Ent-/Verschlüsselte Nachricht: </p>
+  </p-card>
+  <div>
+    <p *ngIf="output">{{transformationType === 'encrypt' ? 'Entschlüsselte' : "Verschlüsselte"}} Nachricht: </p>
     <div *ngIf="output" [ngStyle]="{backgroundColor:'var(--primary-100)'}"
-      class="m-2 flex border-round align-items-center justify-content-center">
+      class="m-2 p-2 flex border-round align-items-center justify-content-center">
       <p>{{output}}</p>
     </div>
     <button *ngIf="output" pButton pRipple type="button" label="Clear" (click)="clear()"
-      class="p-button-rounded p-button-outlined p-button-secondary p-button-sm w-full"></button>
-  </p-card>
+      class="p-button-rounded p-button-outlined p-button-secondary p-button-sm w-6"></button>
+  </div>
 </div>
