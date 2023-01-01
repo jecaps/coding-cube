@@ -127,12 +127,13 @@ export class AppComponent {
     this.password = '';
     this.input = '';
     this.output = '';
+    this.indices = [];
+    this.columnsObj = {};
+    this.numberOfRows = 0;
+    this.numberOfColumns = 0;
+    this.splittedMessage = [];
+    this.transposedValues = [];
+    this.transformationOptions = [];
     this.displayOutput = false;
-  }
-
-  header() {
-    this.transformationType === 'encrypt'
-      ? 'Entschlüsselte Nachricht'
-      : ' Verschlüsselte Nachricht';
   }
 }
