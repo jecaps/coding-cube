@@ -29,9 +29,10 @@ export class AppComponent {
   }
 
   onEncrypt() {
+    this.password = this.password.toLowerCase();
     this.numberOfRows = Math.ceil(this.input.length / this.password.length);
     this.numberOfColumns = this.password.length;
-    this.splittedMessage = [...this.input.toLowerCase()];
+    this.splittedMessage = [...this.input];
 
     let rows: string[][] | [any] = [];
     let sortedIndices;
@@ -47,9 +48,10 @@ export class AppComponent {
   }
 
   onDecrypt() {
+    this.password = this.password.toLowerCase();
     this.numberOfRows = Math.ceil(this.input.length / this.password.length);
     this.numberOfColumns = this.password.length;
-    this.splittedMessage = [...this.input.toLowerCase()];
+    this.splittedMessage = [...this.input];
 
     let cols: string[][] | [any] = [];
     let sortedIndices;
