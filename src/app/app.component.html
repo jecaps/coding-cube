@@ -19,12 +19,14 @@
   <p-dialog header="Ent-/Verschlüsselte Nachricht" [(visible)]="displayOutput" [modal]="true" [closable]="false"
     [style]="{'width': '60vw', 'max-width': '28rem'}">
     <p>{{output}}</p>
-    <button id="output" pButton pRipple type="button" label="Copy" (click)="copy()"
-      class="p-button-rounded p-button-sm w-5"></button>
-    <button pButton pRipple type="button" label="Clear" (click)="clear()"
-      class="p-button-rounded p-button-outlined p-button-sm w-5"></button>
+    <div class="flex justify-content-around">
+      <button id="output" pButton pRipple type="button" label="Copy" (click)="copy()"
+        class="p-button-rounded p-button-sm w-5"></button>
+      <button pButton pRipple type="button" label="Clear" (click)="clear()"
+        class="p-button-rounded p-button-outlined p-button-sm w-5"></button>
+    </div>
   </p-dialog>
 
-  <p-toast position="bottom-center" key="bc"></p-toast>
+  <p-toast position="bottom-center" key="bc" [style]="{'max-width': '20rem'}"></p-toast>
 
 </div>
