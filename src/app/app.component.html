@@ -17,10 +17,10 @@
   </p-card>
 
   <p-dialog header="Ent-/Verschlüsselte Nachricht" [(visible)]="displayOutput" [modal]="true" [closable]="false"
-    [style]="{'width': '60vw', 'max-width': '26rem'}">
+    [style]="{'width': '60vw', 'max-width': '28rem'}">
     <p>{{output}}</p>
     <button *ngIf="output" pButton pRipple type="button" label="Clear" (click)="clear()"
-      class="p-button-rounded p-button-outlined p-button-secondary p-button-sm w-6"></button>
+      class="p-button-rounded p-button-outlined p-button-sm w-6"></button>
   </p-dialog>
 
 </div>
