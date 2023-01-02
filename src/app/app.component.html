@@ -16,7 +16,7 @@
       class="p-button-rounded w-full justify-content-center mt-2">Decrypt</button>
   </p-card>
 
-  <p-dialog header="Ent-/Verschlüsselte Nachricht" [(visible)]="displayOutput" [modal]="true"
+  <p-dialog header="Ent-/Verschlüsselte Nachricht" [(visible)]="displayOutput" [modal]="true" [closable]="false"
     [style]="{'width': '60vw', 'max-width': '26rem'}">
     <p>{{output}}</p>
     <button *ngIf="output" pButton pRipple type="button" label="Clear" (click)="clear()"
