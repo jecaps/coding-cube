@@ -150,6 +150,7 @@ export class AppComponent {
       summary: 'Success',
       detail: 'Copied to Clipboard',
       life: 2000,
+      closable: false,
     });
   }
 }
