@@ -133,7 +133,6 @@ export class AppComponent {
     this.numberOfColumns = 0;
     this.splittedMessage = [];
     this.transposedValues = [];
-    this.transformationOptions = [];
     this.displayOutput = false;
   }
 }
