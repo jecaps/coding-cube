@@ -148,8 +148,7 @@ export class AppComponent {
   showBottomCenter() {
     this.messageService.add({
       key: 'bc',
-      severity: 'info',
-      summary: 'Success',
+      severity: 'success',
       detail: 'Copied to Clipboard',
       life: 2000,
       closable: false,
