@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://unpkg.com/primeflex/themes/saga-blue.css">
 
 <div class="card-container flex flex-column justify-content-center align-items-center m-auto text-center h-screen">
-  <p-card header="Kodierwürfel" [style]="{'min-width': '23rem'}">
+  <p-card header="Kodierwürfel" [style]="{'min-width': '22rem'}">
     <p-selectButton [options]="transformationOptions" [(ngModel)]="transformationType" optionLabel="label"
       optionValue="value"></p-selectButton>
     <p>Lösungswort eingeben: </p>
@@ -11,12 +11,13 @@
     <textarea pInputTextarea id="" cols="20" rows="3" [(ngModel)]="input"
       class="w-full justify-content-center"></textarea>
     <button *ngIf="transformationType ===  'encrypt'" pButton pRipple (click)="onEncrypt()"
-      class="p-button-rounded w-full justify-content-center">Encrypt</button>
+      class="p-button-rounded w-full justify-content-center mt-2">Encrypt</button>
     <button *ngIf="transformationType ===  'decrypt'" pButton pRipple (click)="onDecrypt()"
-      class="p-button-rounded w-full justify-content-center">Decrypt</button>
+      class="p-button-rounded w-full justify-content-center mt-2">Decrypt</button>
   </p-card>
 
-  <p-dialog header="Ent-/Verschlüsselte Nachricht" [(visible)]="displayOutput" [modal]="true" [style]="{width: '70vw'}">
+  <p-dialog header="Ent-/Verschlüsselte Nachricht" [(visible)]="displayOutput" [modal]="true"
+    [style]="{'width': '60vw', 'max-width': '26rem'}">
     <p>{{output}}</p>
     <button *ngIf="output" pButton pRipple type="button" label="Clear" (click)="clear()"
       class="p-button-rounded p-button-outlined p-button-secondary p-button-sm w-6"></button>
