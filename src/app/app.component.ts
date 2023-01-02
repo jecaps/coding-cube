@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers: [MessageService],
 })
 export class AppComponent {
   password: string = '';
@@ -19,7 +21,7 @@ export class AppComponent {
   transformationType: string = 'encrypt';
   displayOutput: boolean = false;
 
-  constructor() {
+  constructor(private messageService: MessageService) {
     this.transformationOptions = [
       { label: 'Encrypt', value: 'encrypt' },
       { label: 'Decrypt', value: 'decrypt' },
@@ -134,5 +136,20 @@ export class AppComponent {
     this.splittedMessage = [];
     this.transposedValues = [];
     this.displayOutput = false;
+  }
+
+  copy() {
+    navigator.clipboard.writeText(this.output);
+    this.showBottomCenter();
+  }
+
+  showBottomCenter() {
+    this.messageService.add({
+      key: 'bc',
+      severity: 'info',
+      summary: 'Success',
+      detail: 'Copied to Clipboard',
+      life: 2000,
+    });
   }
 }
