@@ -7,11 +7,11 @@
       optionValue="value"></p-selectButton>
     <p>Please enter the password</p>
     <input pInputText type="text" [(ngModel)]="password" class="p-inputtext-sm w-full">
-    <p>Write message you want to {{transformationType === "encrypt" ? "Encrypt": "Decrypt"}} </p>
+    <p>Write message you want to {{transformationType === "encrypt" ? "encrypt": "decrypt"}} </p>
     <textarea pInputTextarea id="" cols="20" rows="3" [(ngModel)]="input"
       class="w-full justify-content-center"></textarea>
     <button pButton pRipple (click)="transformationType === 'encrypt' ? onEncrypt() : onDecrypt()"
-      class="p-button-rounded w-8 justify-content-center mt-2 font-semibold">Convert Message</button>
+      class="p-button-rounded w-8 justify-content-center mt-2 font-semibold">Transform Message</button>
   </p-card>
 
   <p-dialog header="{{transformationType === 'encrypt' ? 'Encrypted Message' : 'Decrypted Message'}}"
