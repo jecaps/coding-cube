@@ -44,7 +44,7 @@ export class AppComponent {
     sortedIndices.map((idx) => {
       this.output += this.columnsObj[idx as keyof typeof this.columnsObj];
     });
-    this.showOutput();
+    this.displayOutput = true;
   }
 
   onDecrypt() {
@@ -72,7 +72,7 @@ export class AppComponent {
     this.transposedValues.map(
       (value: any[]) => (this.output += value.join(''))
     );
-    this.showOutput();
+    this.displayOutput = true;
   }
 
   slicing(
@@ -123,10 +123,6 @@ export class AppComponent {
       .map((idx) => idx[0]);
   }
 
-  showOutput() {
-    this.displayOutput = true;
-  }
-
   clear() {
     this.password = '';
     this.input = '';
@@ -142,10 +138,6 @@ export class AppComponent {
 
   copy() {
     navigator.clipboard.writeText(this.output);
-    this.showBottomCenter();
-  }
-
-  showBottomCenter() {
     this.messageService.add({
       key: 'bc',
       severity: 'success',
