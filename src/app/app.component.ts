@@ -123,7 +123,7 @@ export class AppComponent {
       .map((idx) => idx[0]);
   }
 
-  clear() {
+  close() {
     this.password = '';
     this.input = '';
     this.output = '';
