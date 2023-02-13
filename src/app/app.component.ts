@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { Character } from './character';
+import { CharacterService } from './character.service';
 
 @Component({
   selector: 'app-root',
@@ -21,11 +23,17 @@ export class AppComponent {
   transformationType: string = 'encrypt';
   displayOutput: boolean = false;
 
-  constructor(private messageService: MessageService) {
+  loesungswort: Character[] = [];
+
+  constructor(private messageService: MessageService, private characterService: CharacterService) {
     this.transformationOptions = [
       { label: 'Encrypt', value: 'encrypt' },
       { label: 'Decrypt', value: 'decrypt' },
     ];
+  }
+
+  print(): void {
+    this.characterService.characterDetails(this.password)
   }
 
   onEncrypt() {
