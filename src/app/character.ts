@@ -1,6 +1,6 @@
 export interface Character {
     letter: string;
-//     sortedPosition: number;
     originalPosition: number;
+    sortedPosition: number;
 //     characterColumns: String[];
 }

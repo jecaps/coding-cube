@@ -10,7 +10,7 @@ import { CharacterService } from './character.service';
   providers: [MessageService],
 })
 export class AppComponent {
-  password: string = '';
+  password: string = 'schwarzwald';
   input: string = '';
   output: string = '';
   indices: string[][] = [];
