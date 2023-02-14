@@ -7,8 +7,16 @@ import { Character } from './character';
 export class CharacterService {
   passwordDetails: Character[] = [];
 
-  characterDetails(password: string) {
+  characterDetails(password: string, message: string) {
     let splitPassword = [...password];
+    let copiedMessage = [...message]
+    let numOfCols = password.length;
+    let numOfRows = Math.ceil(message.length / numOfCols);
+
+    let rows: any[] = [];
+    this.sliceMessage(rows, copiedMessage, numOfRows, numOfCols)
+    let transposedValues = rows[0].map((_:[], colIndex: number) => rows.map(row => row[colIndex]));
+
 
     // add index to get original order
     let splitPasswordWithIndex: any[] = [];
@@ -36,9 +44,22 @@ export class CharacterService {
     });
     
     console.log(this.passwordDetails);
+    console.log(rows)
+    console.log(transposedValues)
   }
 
   getPasswordDetails() {
     return this.passwordDetails;
+  }
+
+  sliceMessage(array: any[], splitMessage: String[], numberToLoop: number, numberToCompare: number) {
+    for (let i = 0; i < numberToLoop; i++) {
+      if (splitMessage.length < numberToCompare) {
+        while (splitMessage.length < numberToCompare) {
+          splitMessage.push(" ");
+        }
+      }
+      array.push(splitMessage.splice(0, numberToCompare));
+    }
   }
 }

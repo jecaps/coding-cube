@@ -11,7 +11,7 @@ import { CharacterService } from './character.service';
 })
 export class AppComponent {
   password: string = 'schwarzwald';
-  input: string = '';
+  input: string = 'Hallo Welt, heute ist ein wunderschöner Tag. Ich werde heute Fahrrad fahren und ein Eis essen gehen :-)';
   output: string = '';
   indices: string[][] = [];
   columnsObj: {} = {};
@@ -33,7 +33,7 @@ export class AppComponent {
   }
 
   print(): void {
-    this.characterService.characterDetails(this.password)
+    this.characterService.characterDetails(this.password, this.input)
   }
 
   onEncrypt() {
