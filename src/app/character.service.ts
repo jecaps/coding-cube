@@ -8,55 +8,52 @@ export class CharacterService {
   passwordDetails: Character[] = [];
 
   characterDetails(password: string, message: string) {
-    let splitPassword = [...password];
-    let copiedMessage = [...message]
+    // create an array of arrays that correspond to the characters in the column
+    let transposedValues: any[] = [];
+    let copiedMessage = [...message];
     let numOfCols = password.length;
     let numOfRows = Math.ceil(message.length / numOfCols);
-
-    let rows: any[] = [];
-    this.sliceMessage(rows, copiedMessage, numOfRows, numOfCols)
-    let transposedValues = rows[0].map((_:[], colIndex: number) => rows.map(row => row[colIndex]));
-
-
-    // add index to get original order
-    let splitPasswordWithIndex: any[] = [];
-    splitPassword.forEach((password, idx) =>
-      splitPasswordWithIndex.push([password, idx])
+    this.sliceMessage(transposedValues, copiedMessage, numOfRows, numOfCols);
+    transposedValues = transposedValues[0].map((_: [], colIndex: number) =>
+      transposedValues.map((row) => row[colIndex])
     );
+
+    // add index to get original order and insert the array in transposed values at index position
+    let splitPassword = [...password];
+    let splitPasswordWithIndex: any[] = [];
+    splitPassword.forEach((password, idx) => {
+      splitPasswordWithIndex.push([password, idx, transposedValues[idx]]);
+    });
 
     // sort password and add index for the sorted order
     let sorted = [...splitPasswordWithIndex].sort((a, b) =>
-      a[0] > b[0] ? 1 : -1
+      a[0] >= b[0] ? 1 : -1
     );
     sorted.forEach((element, idx) => element.push(idx));
 
-    // for each array in 'sorted' build the character object
+    // map array in 'sorted' to build the character object
     sorted.map((element: any[]) => {
-      let char = element[0];
-
       let character = {
-        letter: char,
+        letter: element[0],
         originalPosition: element[1],
-        sortedPosition: element[2],
+        characterColumns: element[2],
+        sortedPosition: element[3],
       };
-
       this.passwordDetails.push(character);
     });
-    
-    console.log(this.passwordDetails);
-    console.log(rows)
-    console.log(transposedValues)
   }
 
-  getPasswordDetails() {
-    return this.passwordDetails;
-  }
-
-  sliceMessage(array: any[], splitMessage: String[], numberToLoop: number, numberToCompare: number) {
+	// slice message according to length of password
+  sliceMessage(
+    array: any[],
+    splitMessage: String[],
+    numberToLoop: number,
+    numberToCompare: number
+  ) {
     for (let i = 0; i < numberToLoop; i++) {
       if (splitMessage.length < numberToCompare) {
         while (splitMessage.length < numberToCompare) {
-          splitMessage.push(" ");
+          splitMessage.push(' ');
         }
       }
       array.push(splitMessage.splice(0, numberToCompare));

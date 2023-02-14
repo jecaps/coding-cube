@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { Character } from './character';
 import { CharacterService } from './character.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { CharacterService } from './character.service';
   styleUrls: ['./app.component.css'],
   providers: [MessageService],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   password: string = 'schwarzwald';
   input: string = 'Hallo Welt, heute ist ein wunderschöner Tag. Ich werde heute Fahrrad fahren und ein Eis essen gehen :-)';
   output: string = '';
@@ -23,8 +22,6 @@ export class AppComponent {
   transformationType: string = 'encrypt';
   displayOutput: boolean = false;
 
-  loesungswort: Character[] = [];
-
   constructor(private messageService: MessageService, private characterService: CharacterService) {
     this.transformationOptions = [
       { label: 'Encrypt', value: 'encrypt' },
@@ -32,8 +29,13 @@ export class AppComponent {
     ];
   }
 
-  print(): void {
+  ngOnInit(): void {
     this.characterService.characterDetails(this.password, this.input)
+    let result = this.characterService.passwordDetails.map(password => {
+      return password.characterColumns.join('')
+    });
+
+    console.log(result.join(''));
   }
 
   onEncrypt() {
